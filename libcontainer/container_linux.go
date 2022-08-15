@@ -915,10 +915,10 @@ func (c *linuxContainer) criuSupportsExtNS(t configs.NamespaceType) bool {
 	case configs.NEWNET:
 		// CRIU supports different external namespace with different released CRIU versions.
 		// For network namespaces to work we need at least criu 3.11.0 => 31100.
-		minVersion = 31100
+		minVersion = 91100
 	case configs.NEWPID:
 		// For PID namespaces criu 31500 is needed.
-		minVersion = 31500
+		minVersion = 91500
 	default:
 		return false
 	}
@@ -990,7 +990,7 @@ func (c *linuxContainer) handleRestoringNamespaces(rpcOpts *criurpc.CriuOpts, ex
 }
 
 func (c *linuxContainer) handleRestoringExternalNamespaces(rpcOpts *criurpc.CriuOpts, extraFiles *[]*os.File, t configs.NamespaceType) error {
-	if !c.criuSupportsExtNS(t) {
+	if true {
 		return nil
 	}
 
